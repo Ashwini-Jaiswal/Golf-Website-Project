@@ -1,0 +1,452 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: white;
+}
+html, body{
+    height: 100%;
+    width: 100%;
+}
+body::-webkit-scrollbar{
+    width: 8px;
+    background-color: #95C11E;
+}
+body::-webkit-scrollbar-thumb{
+    background-color: rgb(255, 255, 255);
+    border-radius: 3px;
+}
+#nav{
+    height: 130px;
+    width: 100%;
+    /* background: red; */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0px 120px;
+    gap: 48px;
+    position: fixed;
+    z-index: 999;
+}
+#nav img{
+    height: 55%;
+}
+#nav h3{
+    font-weight: 500;
+}
+#nav h3:hover{
+    cursor: pointer;
+}
+#cursor{
+    height: 20px;
+    width: 20px;
+    background-color: #95C11E;
+    border-radius: 50%;
+    position: fixed;
+    z-index: 999;
+    /* transition: all ease 0.5s; */
+}
+#cursor-blur{
+    height: 400px;
+    width: 400px;
+    background-color: #95C11E;
+    border-radius: 50%;
+    position: fixed;
+    opacity: 0.3;
+    filter: blur(50px);
+    z-index: 8;
+}
+video{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    position: fixed;
+    z-index: -1;
+
+}
+#main{
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.36);
+}
+#page1{
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    z-index: 10;
+}
+
+#page1 h1{
+    font-size: 110px;
+    font-weight: 700;
+    position: relative; /*to make the content under before placed according to h1*/
+}
+#page1 h1::before{
+    content: "EAT. DRINK. PLAY.";
+    position: absolute;
+    color: black;
+    top: -5px;
+    left: -5px;
+    -webkit-text-stroke: 1px #95C11E; /*to give the upper boder*/
+    z-index: -1;
+}
+#page1 h2{
+    font-size: 35px;
+    font-weight: 500;
+}
+#page1 p{
+    font-size: 20px;
+    width: 40%;
+    padding-top: 10px;
+}
+#page1 #arrow{
+    position: absolute;
+    height: 200px;
+    width: 200px;
+    border: 2px solid #95C11E ;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: -2%;
+    bottom: -3%;
+    transition: all ease 0.5s;
+}
+#page1 #arrow i{
+    font-size: 60px;
+}
+#page1 #arrow:hover{
+    scale:0.3;
+    background-color: #95C11E;
+
+}
+#page2{
+    min-height: 100vh;
+    width: 100%;
+    z-index: 10;
+}
+
+#scroller{
+    width: 100%;
+    /* background-color: aqua; */
+    white-space: nowrap;
+    position: relative;
+    overflow-x: auto; /*used because the words were going out of screen*/
+    overflow-y: hidden;
+    z-index: 10;
+
+}
+#scroller::-webkit-scrollbar{
+    display: none;
+}
+#scroller-in{
+    white-space: nowrap;
+    display: inline-block;
+    animation-name: scroll;
+    animation-duration: 30s;
+    animation-timing-function: linear; /*to run the animation continuously*/
+    animation-iteration-count: infinite;
+}
+#scroller-in h1{
+    display: inline-block;
+    font-size: 120px;
+    font-weight: 800;
+    color: transparent;
+    -webkit-text-stroke: 2px #95C11E; /*to give the upper boder*/
+    margin-right: 20px; /*to make spaces bw the words*/
+    letter-spacing: 2px;
+    transition: all linear 0.4s; /*for slow hovering effect*/
+}
+#scroller-in h1:hover{
+    color: #95C11E;
+}
+/*ANIMATION STARTS HERE*/
+@keyframes scroll{
+    from{
+        transform: translateX(0);
+    }
+    to{
+        transform: translateX(-100%);
+    }
+}
+
+#about-us{
+    /* background-color: aqua; */
+    height: 40%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 10;
+}
+#about-us img{
+    height: 45vh;
+    width: 15%;
+    border-radius: 20px;
+    margin: 80px;
+    object-fit: cover;
+    object-position: center;
+}
+#about-us-in{
+    width: 45%;
+    text-align: center;
+}
+#about-us-in h1{
+    font-size: 60px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+#about-us-in p{
+    font-size: 22px;
+
+}
+
+#cards-container{
+    width: 100%;
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    z-index: 10;
+    position: relative;
+}
+.card{
+    height: 80%;
+    width: 20%;
+    position: relative;
+    overflow: hidden;
+    transition: all ease 0.6s;
+}
+.card img{
+    position: absolute;
+    border-radius: 15px;
+    object-fit: cover;
+    object-position: center;
+    height: 90%;
+    width: 100%;
+    
+}
+.overlay{
+    height: 90%;
+    width: 100%;
+    background-color: #95C11E;
+    position: absolute;
+    border-radius: 15px;
+    text-align: center;
+    opacity: 0;
+    transition: all ease 0.4s;
+    
+}
+.overlay h1{
+    margin-top: 80px;
+    color: black;
+    font-weight: 500;
+}
+.overlay p{
+    font-size: 12px;
+    color: black;
+}
+.overlay:hover{
+    opacity: 1;
+}
+.card:hover{
+    transform: rotate3d(-1,1,0,20deg);
+}
+#green-div{
+    height: 30vh;
+    width: 100%;
+    background-color: #95C11E;
+    background: linear-gradient(to left bottom,green,#95C11E );
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+
+}
+#green-div img{
+    height: 100%;
+    width: 20%;
+    object-fit: cover;
+}
+#green-div #img1{
+    rotate: 180deg;
+}
+#green-div h2{
+    width: 38%;
+    color: black;
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 45px;
+
+}
+#page3{
+    height: 100vh;
+    width: 100%;
+    background-color: black;
+
+}
+#page3 #text{
+    height: 80vh;
+    width: 100%;
+    padding-top: 100px;
+    /* background-color: aqua; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
+
+#text img{
+    height: 70px;
+    width: 70px;
+    position: absolute;
+
+}
+#text #colon1{
+    top: 11%;
+    left: 11%;
+}
+#text #colon2{
+    bottom: 1%;
+    right: 11%;
+}
+#text h2{
+    font-size: 40px;
+    font-weight: 600;
+    width: 60%;
+    line-height: 45px;
+}
+
+#page4{
+    height: 75vh;
+    width: 100%;
+    background-color: black;
+    z-index: 10;
+    
+}
+#three-train{
+    height: 30vh;
+    width: 100%;
+    /* background-color: blue; */
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    gap: 60px;
+    position: relative;
+}
+.train{
+    height: 70%;
+    width: 25%;
+    overflow: hidden; /*the images were getting outside of the box*/
+    border-radius: 20px;
+    position: relative;
+}
+.train h1{
+    height: 100%;
+    width: 100%;
+    background-color: #95C11E;
+    color: black;
+    font-size: 35px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    z-index: 10;
+    transition: all ease 0.5s;
+}
+.train img{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    object-fit: cover;
+    scale: 1.1; /*for transition effect(zoom out)*/
+    transition: all ease 0.5s;
+    z-index: 9; /*crsr blurr was effecting it*/
+}
+.train:hover h1{
+    background-color: transparent;
+    color: white;
+}
+.train:hover img{
+    scale: 1;
+}
+#three-train h2{
+    font-size: 92px;
+    position: absolute; /*to make it go behing the train boxes*/
+    color: transparent;
+    -webkit-text-stroke: 3px white; /*to give the upper boder*/
+    top: -60px;
+    z-index: 9;
+}
+#three-train h2:hover{
+    -webkit-text-stroke: 3px #d9fa7e; /*to give the upper boder*/
+ 
+}
+#footer{
+    height: 45vh;
+    width: 100%;
+    background: linear-gradient(to top right,#95C11E, rgb(41, 233, 41));
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: #95C11E; */
+}
+#footer>img{
+    height: 100%;
+    width: 20%;
+    left: 0;
+    position: absolute;
+    object-fit: cover;
+}
+#footer #cont{
+    position: absolute;
+    height: 70%;
+    width: 90%;
+    /* background-color: aqua; */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 60px;
+    z-index: 99;
+}
+#cont #c1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10%;
+    width: 10%;
+    
+
+    /* object-fit: cover; */
+    /* position: absolute; */
+}
+
+#c2 h3 {
+    font-size: 2.4vw;
+    text-transform: uppercase;
+    color: #000;
+    font-weight: 700;
+}
+#c3 h3 {
+    font-size: 2.4vw;
+    text-transform: uppercase;
+    color: #000;
+    font-weight: 700;
+}
+#c4 h4 {
+    font-size: 1.2vw;
+    text-transform: uppercase;
+    color: #000;
+    font-weight: 600;
+    /* line-height: 20px; */
+}
